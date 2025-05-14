@@ -3,7 +3,10 @@ import {z} from 'zod'
 
 const envSchema = z.object({
     NODE_ENV: z.enum(['dev', 'test', 'productions']).default('dev'),
-    PORT: z.coerce.number().default(3333)
+    PORT: z.coerce.number().default(3333),
+    POSTGRES_USERNAME: z.string(),
+    POSTGRES_PASSWORD: z.string(),
+    POSTGRES_DATABASE: z.string(),
 })
 
 const _env = envSchema.safeParse(process.env)
